@@ -1,4 +1,6 @@
+import json
 import requests
+
 
 url ="https://api.open-meteo.com/v1/forecast"
 
@@ -9,5 +11,22 @@ params = {
 }
 
 
-response = requests.get(url, params=params)
-print(response.json())
+# response = requests.get(url, params=params)
+# print(response.json())
+
+data = None
+with open('response_example.json') as f:
+   data = f.read()
+# data = json.loads(data)
+
+# print(data)
+
+# Print the raw data to check for issues
+# print("Raw data from file:", data)
+
+# Parse the JSON data
+try:
+    data = json.loads(data)
+    print("Parsed JSON data:", data)
+except json.JSONDecodeError as e:
+    print(f"Error parsing JSON: {e}")

@@ -31,6 +31,7 @@ def write_to_csv(filename, data):
     with open(filename, "a", newline="") as csvfile:
         writer = csv.writer(csvfile)
         writer.writerow(data)
+        
 # check if file exists, if not ,write the header
 if not os.path.isfile(output_filename):
     header = ["latitude","longitude","time", "relative_humidity_2m", "wind_speed_180m", "temperature_180m","soil_temperature_54cm"]
